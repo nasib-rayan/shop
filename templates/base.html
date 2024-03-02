@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href= "{% static 'home.css'%}"/>
+    <link rel="stylesheet" href="{% static 'main.css'%}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'more.css'%}">
+    <link rel="stylesheet" href= "{% static 'form.css'%}"/>
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <title>فروشگاه بزرگ ...</title>
+  </head>
+
+
+ <body>
+  {%block header%} {% include 'main/header.html' %} {%endblock%}     
+  
+ 
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+    {% block content %} 
+    {%endblock%}     
+    </div> 
+  </section>
+
+  {%block footer%} {% include 'main/footer.html' %} {%endblock%}     
+
+  
+<script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/main.js'%}"></script>
+
+<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+ </body>
+</html>
+
+
+
+

@@ -1,0 +1,44 @@
+
+    {%load static %}
+    <header>
+      <nav>
+        <div class="nav-right">
+          <a href=""><i class="far fa-user"></i></a>
+          <a href=""><i class="fas fa-shopping-cart"></i></a>
+          <a href=""><i class="fas fa-home"></i></a>
+          <a href=""><i class="fas fa-search"></i></a>
+        </div>
+        <div class="nav-left">
+          <div class="register-login-btn">
+            <i class="fas fa-user"></i>
+            <a href="#">ثبت نام / ورود</a>
+          </div>
+        </div>
+      </nav>
+      <section class="slider">
+        <div class="slides">
+          <div class="item  active" id="slide1">
+            <img src="{% static '1.jpg' %}" alt="" />
+            <span>آهنگ ها رو زنده تر از اون چیزی که هستن گوش بده</span>
+          </div>
+          <div class="item " id="slide2">
+            <img src="{% static '2.jpg' %}" alt="" />
+            <span style="color: white;"
+              >کیفیت صدایی که همیشه<br />
+              دنبالش بودی اینجاست</span
+            >
+          </div>
+          <div class="item " id="slide3">
+            <img src="{% static '3.jpg' %}" alt="" />
+            <span>رویا هاتو با صدای بلند گوش بده</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <i onclick="setSlide('slide1' , 1)" class="fas fa-circle"></i>
+          <i onclick="setSlide('slide2' , 2)" class="fas fa-circle"></i>
+          <i onclick="setSlide('slide3' , 3)" class="fas fa-circle"></i>
+        </div>
+      </section>
+    </header>
+
+  
