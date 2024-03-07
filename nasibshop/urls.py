@@ -15,7 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('', views.home , name= 'home'),
-    path('kharid', veiws.kharid , name='kharid')
+    path('kharid', views.kharid , name='kharid')
 ]
 
 
