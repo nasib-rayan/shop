@@ -19,6 +19,7 @@ def login_view(request):
     if user.is_authenticated:
         return render(request ,'home.html')
     if request.POST:
+    #if request.method == 'POST':
         form = AccountAuthenticationForm(request.POST)
         if form.is_valid():
             print('form', form.cleaned_data)
@@ -26,8 +27,8 @@ def login_view(request):
             raw_password = form.cleaned_data.get('password')
             user = authenticate(email=email, password=raw_password)
             if user:
-                login(request, user)
-                return render(request , 'home.html')
+               login(request, user)
+               return render(request , 'home.html')
     else:
         form = AccountAuthenticationForm()
     
@@ -57,7 +58,7 @@ def register_view(request , *args, **kwargs):
             destination = kwargs.get("next")
             if destination:
                 return redirect(destination)
-        return render( request , 'home.html')
+        return render( request , 'accounts/login.html')
         #else:
         context['registration_form'] = form
 

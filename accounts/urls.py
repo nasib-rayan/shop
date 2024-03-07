@@ -7,15 +7,15 @@ from accounts.views import ( login_view, register_view, logout_view
 #edit_account_view,
 )
 
-app_name = "accounts"
+app_name = 'accounts'
 
 
 urlpatterns = [
     path('login/', login_view, name='login'),
     path('register/', register_view, name='register'),
     path('logout/', logout_view, name='logout'),
+    #path('<slug>',views.article_detail, name= "detail"),
          # path('<user_id>/profile/', profile_view, name='profile'),
-    #path('<user_id>/profile/', edit_account_view, name='profile')
 ]
 
 
