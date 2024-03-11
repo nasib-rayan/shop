@@ -28,7 +28,10 @@ def login_view(request):
             user = authenticate(email=email, password=raw_password)
             if user:
                login(request, user)
-               return render(request , 'home.html')
+               if 'next' in request.POST:
+                   return redirect(request.POST.get('next'))
+               else:
+                   return render(request , 'home.html')
     else:
         form = AccountAuthenticationForm()
     
@@ -75,25 +78,25 @@ def register_view(request , *args, **kwargs):
 
 def logout_view(request):
     logout(request)
-    return render('home.html')
+    return render(request , 'home.html')
 
 
 
 
 
-                      #این بخش توسط خالق حذف شده
-# def profile_view(request, *args, **kwargs):
-#     # account = request.user
-#     context = {}
-#     user_id = kwargs.get('user_id')
-#     try:
-#         account = Account.objects.get(pk=user_id)
-#     except:
-#         return HttpResponse('Someting went wrong')
+                    
+#def profile_view(request, *args, **kwargs):
+     #account = request.user
+     #context = {}
+     #user_id = kwargs.get('user_id')
+     #try:
+         #account = Account.objects.get(pk=user_id)
+     #except:
+         #return HttpResponse('Someting went wrong')
     
-#     context['user'] = account
+     #context['user'] = account
     
-#     return render(request, 'account/profile.html', context)
+     #return render(request, 'accounts/profile.html', context)
 
 
 #def edit_account_view(request, *args, **kwargs):

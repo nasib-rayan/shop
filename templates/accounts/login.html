@@ -4,6 +4,9 @@
 <div class="style-form">
     <form method="post">
         {% csrf_token %}
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{request.GET.next}}">
+        {% endif %}
         <h2 class="text-center" >Login</h2>       
         <div class="form-group">
             <input type="text" name="email" class="form-control" placeholder="username" required="required">
