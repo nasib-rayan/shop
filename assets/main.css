@@ -1,11 +1,13 @@
 @font-face{
-    font-family: iran;
-    src: url(iran.ttf);
+    font-family: shabnam;
+    src: url(../fonts/shabnam.ttf);
 }
+
+
 
 *{
     direction: rtl;
-    font-family: iran;
+    font-family: shabnam;
     box-sizing: border-box;
 }
 
