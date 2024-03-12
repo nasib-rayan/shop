@@ -78,7 +78,9 @@ def register_view(request , *args, **kwargs):
 
 def logout_view(request):
     logout(request)
-    return render(request , 'home.html')
+    return render(request , 'home.html') 
+
+
 
 
 

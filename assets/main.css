@@ -1,13 +1,13 @@
 @font-face{
-    font-family: shabnam;
-    src: url(../fonts/shabnam.ttf);
+    font-family: 'shabnam';
+    src: url('shabnam.ttf') format('ttf');
 }
 
 
 
 *{
     direction: rtl;
-    font-family: shabnam;
+    font-family: 'shabnam';
     box-sizing: border-box;
 }
 

@@ -124,7 +124,7 @@ header nav .nav-left .register-login-btn a{
 }
 
 .shoping-card .img-sec .hot-offer{
-    background-color: #f17d70;
+    background-color: #ee5f27;
     color: white;
     padding: 3px 5px;
     border-radius: 5px;
@@ -138,7 +138,7 @@ header nav .nav-left .register-login-btn a{
     position: absolute;
     left: 10px;
     top: 10px;
-    color: #f1c40f;
+    color: #f9fc48;
 }
 
 .shoping-card .title{
@@ -211,7 +211,7 @@ header nav .nav-left .register-login-btn a{
 }
 
 .supper-offer-box .supper-offer-box-title{
-    background-color: #e74c3c;
+    background-color: #1e7c3e;
     color: white;
     padding: 8px 30px;
     display: inline-block;
@@ -249,7 +249,7 @@ header nav .nav-left .register-login-btn a{
 
 .supper-offer-box .body .spesification .price-row .off{
     color: white;
-    background-color: #e74c3c;
+    background-color: #1e7c3e;
     padding: 5px 20px;
     border-radius: 25px;
 
