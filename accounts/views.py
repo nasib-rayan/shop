@@ -19,7 +19,6 @@ def login_view(request):
     if user.is_authenticated:
         return render(request ,'home.html')
     if request.POST:
-    #if request.method == 'POST':
         form = AccountAuthenticationForm(request.POST)
         if form.is_valid():
             print('form', form.cleaned_data)
