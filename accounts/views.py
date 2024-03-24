@@ -48,7 +48,6 @@ def register_view(request , *args, **kwargs):
         return HttpResponse("You are already authenticated as " + str(user.email))
 
     context = {}
-    #if request.method == 'POST':
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -69,6 +68,9 @@ def register_view(request , *args, **kwargs):
         context['registration_form'] = form
     return render(request, 'accounts/register.html', context)
     #return render(request,'accounts/register.html',{'form':form})
+
+
+
 
 
 
