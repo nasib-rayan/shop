@@ -13,7 +13,7 @@
               
         <div class="nav-left">
           {% if user.is_authenticated %}
-          <p class="card-title" style="display:inline"> {{ user.username }} خوش آمدید </p>
+          <p class="card-title" style="display:inline">{{ user.username }} خوش آمدید  </p>
           <div  class="register-login-btn"style="display:inline">
             <i class="fas fa-user"></i>
             <a href="{% url 'accounts:logout'  %}" >logout</a>
@@ -23,7 +23,7 @@
                 
                 <div class="register-login-btn">
                   <i class="fas fa-user"></i>
-                  <a href="{% url 'accounts:register'  %}" >login / logup</a>
+                  <a href="{% url 'accounts:signup'  %}" >signup/login </a>
                   </div>
           {% endif %}
               

@@ -1,144 +1,48 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from accounts.forms import AccountAuthenticationForm , RegistrationForm  #, AccountUpdateForm
-from django.contrib.auth import authenticate, login, logout
-from accounts.models import Account
-from django.conf import settings
-from nasibshop.views import home
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import login,logout
+
+# Create your views here.
+def signup_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            #login
+
+            return render(request , 'home.html')
+    else:
+        form = UserCreationForm()
+    return render(request,'accounts/signup.html',{'form':form})
 
 
 
-def moj(request):
-    return HttpResponse('hello word')
 
+def log_view(request):
+    return render(request , 'accounts/log.html')
 
 
 def login_view(request):
-    context = {}
-    user = request.user
-    if user.is_authenticated:
-        return render(request ,'home.html')
-    if request.POST:
-        form = AccountAuthenticationForm(request.POST)
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            print('form', form.cleaned_data)
-            email = form.cleaned_data.get('email')
-            raw_password = form.cleaned_data.get('password')
-            user = authenticate(email=email, password=raw_password)
-            if user:
-               login(request, user)
-               if 'next' in request.POST:
-                   return redirect(request.POST.get('next'))
-               else:
-                   return render(request , 'home.html')
+            # login user
+            user = form.get_user()
+
+            login(request, user)
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('home')
     else:
-        form = AccountAuthenticationForm()
-    
-    context['login_form'] = form
-
-    return render(request, 'accounts/login.html', context)
-
-
-
-
-
-def register_view(request , *args, **kwargs):
-    user = request.user
-    if user.is_authenticated:
-        return HttpResponse("You are already authenticated as " + str(user.email))
-
-    context = {}
-    if request.POST:
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email').lower()
-            raw_password = form.cleaned_data.get('password1')
-            account = authenticate(email=email, password=raw_password)
-            login(request, account)
-            destination = kwargs.get("next")
-            if destination:
-                return redirect(destination)
-        return render( request , 'accounts/login.html')
-        #else:
-        context['registration_form'] = form
-
-    else:
-        form = RegistrationForm()
-        context['registration_form'] = form
-    return render(request, 'accounts/register.html', context)
-    #return render(request,'accounts/register.html',{'form':form})
-
-
-
-
-
-
+        form = AuthenticationForm()
+    return render(request, 'accounts/login.html',{'form':form})
 
 
 
 def logout_view(request):
     logout(request)
-    return render(request , 'home.html') 
+    return render(request , 'home.html')
 
 
-
-
-
-
-
-                    
-#def profile_view(request, *args, **kwargs):
-     #account = request.user
-     #context = {}
-     #user_id = kwargs.get('user_id')
-     #try:
-         #account = Account.objects.get(pk=user_id)
-     #except:
-         #return HttpResponse('Someting went wrong')
-    
-     #context['user'] = account
-    
-     #return render(request, 'accounts/profile.html', context)
-
-
-#def edit_account_view(request, *args, **kwargs):
-#    if not request.user.is_authenticated:
-#        return redirect('account:login')
- #   user_id = kwargs.get('user_id')
-#    account = Account.objects.get(pk=user_id)
-
-#    dic = {}
-
-#    if account.pk != request.user.pk:
-#        return HttpResponse("You cannot edit this profile")
-#    if request.POST:
-#        form = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('account:profile', user_id=account.pk)
-#        else:
-#            form = AccountUpdateForm(request.POST, instance=request.user,
-#            initial = {
-#                'id' : account.id,
-#                'email' : account.email,
-#                'username' : account.username,
-#                'profile_image' : account.profile_image
-#            }
-#            )
-#            dic['form'] = form
-#
- #   else:
- #       form = AccountUpdateForm(
- #           initial = {
-  #          'id' : account.id,
- #           'email' : account.email,
- #           'username' : account.username,
- #           'profile_image' : account.profile_image
- #           }
- #       )
- #       dic['form'] = form
- #       dic['user'] = account
-#
- #   dic['DATA_UPLOAD_MAX_MEMORY_SIZE'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
- #   return render(request, 'account/profile.html', dic)#

@@ -168,15 +168,12 @@
   
 
 
-
-     
         
         <section class="dragble-list">
           <div class="title">
             <span>هندزفری ها</span>
           </div>
           <div id="owl-product" class="owl-carousel owl-theme">
-         {%if products%}
          {%for product in products%}
             <div class="item">
               <div class="shoping-card">
@@ -214,11 +211,8 @@
             </div>
             
             {% endfor %}
-            {% else %}
-                <h5>No Content</h5>
-            {% endif %}
           </div>
         </section>
-  </section>
+  
   </main>
 {%endblock%}
