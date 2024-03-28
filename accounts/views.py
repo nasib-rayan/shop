@@ -11,16 +11,13 @@ def signup_view(request):
             login(request,user)
             #login
 
-            return render(request , 'home.html')
+            return redirect( 'home')
     else:
         form = UserCreationForm()
     return render(request,'accounts/signup.html',{'form':form})
 
 
 
-
-def log_view(request):
-    return render(request , 'accounts/log.html')
 
 
 def login_view(request):
@@ -43,6 +40,6 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request , 'home.html')
+    return redirect( 'home')
 
 

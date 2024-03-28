@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+{%load static%}
+<div class="login-container">
+  <div class="row">
+      <div class="col-lg-8">
+          <div class="login-box">
 <h1>Sign up</h1>
 <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
   {{form}}
   {% csrf_token %}
   <input type="submit" value="signup">
 </form>
-<p class="text-center"><a href="{%  url 'accounts:login' %}">login</a></p>
+<p class="text-center"> اگر حساب کاربری دارید <a href="{%  url 'accounts:login' %}" style="color:white"> اینجا را کلیک کنید </a> </p>
+</div>
+</div>
+<div class="col-lg-4">
+  <div class="login-img-container">
+      <img src="{% static 'images/s1.jpg' %}" alt="">
+  </div>
+</div>
+</div>
+</div>
 {%endblock%}

@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>login</h1>
+{%load static%}
+<div class="login-container">
+  <div class="row">
+      <div class="col-lg-8">
+          <div class="login-box">
+            <h1>login</h1>
 <form class="site-form" action="{% url 'accounts:login' %}" method="post">
   {{form}}
   {% csrf_token %}
@@ -8,6 +13,19 @@
   <input type="hidden" name="next" value="{{request.GET.next}}">
   {% endif %}
   <input type="submit" value="login">
+  <p class="do-you-have">
+    حساب کاربری ندارید ؟
+    <a href={% url 'accounts:signup'%}>ایجاد حساب کاربری</a>
+    .کمتر از یک دقیقه از زمان شما را خواهد گرفت
+  </p>
 </form>
-<p class="text-center"><a href="{% url 'accounts:signup' %}">signup</a></p>
+</div>
+</div>
+<div class="col-lg-4">
+  <div class="login-img-container">
+      <img src="{% static 'images/s1.jpg' %}" alt="">
+  </div>
+</div>
+</div>
+</div>
 {%endblock%}
